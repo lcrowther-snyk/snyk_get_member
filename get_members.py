@@ -11,12 +11,12 @@ headers = {
 }
 
 def list_orgs_in_group(group_id):
-    response = requests.get(API_URL + f"group/{group_id}/orgs", headers=headers)
+    response = requests.get(API_URL + f"group/{group_id}/orgs", headers=headers, timeout=60)
     response.raise_for_status()
     return response.json()['orgs']
 
 def list_members_in_org(org_id):
-    response = requests.get(API_URL + f"org/{org_id}/members?includeGroupAdmins=true", headers=headers)
+    response = requests.get(API_URL + f"org/{org_id}/members?includeGroupAdmins=true", headers=headers, timeout=60)
     response.raise_for_status()
     return response.json()
 
